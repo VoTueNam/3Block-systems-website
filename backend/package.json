@@ -17,6 +17,7 @@
     "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4",
     "morgan": "^1.10.0",
-    "node-virustotal": "^3.35.0"
+    "node-virustotal": "^3.35.0",
+    "urlscan-api": "^0.0.4"
   }
 }

@@ -23,10 +23,9 @@ class SiteController {
     }
 
     //POST - result
-    result(req, res, next) {
-
-        virusTotal.apiVirusTotal(virusTotal.validURL(req.body.q),res)
-        // res.send('ok')
+    async result(req, res, next) {
+        var ketqua = await virusTotal.calculatePercent(virusTotal.validURL(req.body.q))
+        res.send(ketqua)
     }
 
     test(req, res, next) {
