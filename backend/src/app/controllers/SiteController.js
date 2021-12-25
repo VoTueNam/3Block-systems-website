@@ -25,12 +25,27 @@ class SiteController {
     //POST - result
     async result(req, res, next) {
         var ketqua = await virusTotal.calculatePercent(virusTotal.validURL(req.body.q))
-        res.send(ketqua)
+        ketqua = ketqua.toString()
+        res.render('totalResult', {
+            z: ketqua
+        })
     }
+
+
 
     test(req, res, next) {
 
-        res.render('test')
+        //var a = 
+        //var z =[]
+        // for (var i of a) {
+        //     z.push({
+        //         label: i[0],
+        //         y:i[1]
+        //     })
+        // }
+        res.render('totalResult', {
+            z: 'malware,80,phishing,10,unrated,6,malicious,4'
+        })
     }
 
     testResult(req, res, next) {

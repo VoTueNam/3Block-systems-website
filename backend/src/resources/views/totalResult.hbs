@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script>
+        window.onload = function () {
+            var a = JSON.stringify(document.getElementById('value').textContent)
+            a = a.split(",")
+            var z = []
+
+            for (var i = 0; i < a.length; i++){
+                z.push({
+                    label: a[i],
+                    y:parseInt(a[++i])
+                })
+            }
+            
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+
+                animationEnabled: true,
+                title: {
+                    text: "Three Block Systems - Analysis URL"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: z
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+</head>
+
+<body>
+    <p id='value' style="display : none">{{z}}</p>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+
+</html>

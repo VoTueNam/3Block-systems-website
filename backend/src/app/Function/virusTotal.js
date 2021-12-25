@@ -71,10 +71,13 @@ class virusTotal {
             }
         }
 
-        var ketqua = []
+        var ketqua=[]
         for (let count = 0; count < array.length; count++) {
-            var arr = [array[count].name, (Number(value.get(array[count].name)) / engine.length * 100).toFixed(2)]
-            ketqua.push(arr)
+            ketqua.push(array[count].name)
+            ketqua.push((Number(value.get(array[count].name)) / engine.length * 100).toFixed(2))
+            // var arr = array[count].name, (Number(value.get(array[count].name)) / engine.length * 100).toFixed(2)
+            // ketqua.push(arr)
+
         }
 
         /**
