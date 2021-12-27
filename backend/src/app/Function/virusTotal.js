@@ -18,14 +18,14 @@ class virusTotal {
         return results;
     }
 
-    resultAnalysis(url) {
+    async resultAnalysis(url) {
         return new Promise((resolve, reject) => {
             const hashed = nvt.sha256(url);
             const theSameKey = defaultTimedInstance.setKey('3603b9eebdd57284643ace954577ff8d2d6415c027d20c867a22d8c7597e5431');
-            defaultTimedInstance.urlLookup(hashed, function (err, resp) {
+            defaultTimedInstance.urlLookup(hashed, async function (err, resp) {
                 if (err) {
                     console.log('Well, crap.');
-                    reject(err)
+                    resolve('err')
                 }
                 resolve(resp)
             })
@@ -35,6 +35,9 @@ class virusTotal {
 
     async calculatePercent(url) {
         var resp = await this.resultAnalysis(url)
+        if (resp == 'err') {
+            return 'err'
+        }
         var temp = JSON.parse(resp)
         temp = temp.data.attributes.last_analysis_results;
 
